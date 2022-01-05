@@ -54,19 +54,25 @@ I want to implement cypress for the software, but it is rather time consuming, s
 
 I will be using React to implement the frontend. The biggest reasoning is familarity. I am the most fluent with react compared to other frontend libraries/frameworks. Using a familiar library will make the development time faster, reduce errors and produce cleaner code.
 
-For fetching data and making HTTP-requests I have two options that I have experience with: GraphQL and REST. This is not an obvious choice. Using GraphQL has benefits such as fewer endpoints and spesific data fetching. Usage of GraphQL would also demonstrate skill. However since the application will not be that large and it will not have that many endpoints, the usage of GraphQL is not more beneficial compared to REST. REST is easier and faster to implement. I will be using axios for communication with the server. This is purely a familarity reason.
+For fetching data and making HTTP-requests I have two options that I have experience with: GraphQL and REST. This is not an obvious choice. Using GraphQL has benefits such as fewer endpoints and spesific data fetching. Usage of GraphQL would also demonstrate skill. However since the application will not be that large and it will not have that many endpoints, the usage of GraphQL is not more beneficial compared to REST. REST is easier and faster to implement. I will be using axios for communication with the server. This is purely a familarity reason. I personally think that picking technologies just for the sake of displaying skill is not the best idea. I think that it is important to make desicions based on what will improve the development and the product instead of making desicions based on how one can show off skills the best. Usually reducing complexity and development time will make the application in question better and more fault-tolerant. 
 
 State management will be implemented with Redux. Usage of redux is not mandatory, but it makes state management easier to develop and understand.
 
-For UI I will be using Semantic-ui library. It is a simple and clean UI library that will make the program look better.
+For UI I will be using Material UI. It is a simple and clean UI library that will make the program look better.
 
 For testing I will be using Jest and react-testing-library for familarity reasons.
+
+I will also do E2E testing with cypress, if I have time
 
 ### Backend
 
 I will implement the backend with Node.js. The only reason is that I am familiar with it and do not really know other backend frameworks sufficently enough.
 
-For the backend database I have two options I am familiar with: MongoDB and PostgreSQL. As of now I have not made the desicion what I will go with. Most likely with MongoDB for experience reasons.
+I will take a step outside of my comfortzone and use TypeScript for the backend. I want to use this project as a learning opportunity and improve my proficiency with TypeScript. Creating the backend with TypeScript allows me to enforce data structures and types in the backend and database. I think that TypeScript's benefits are more important in the backend than in the frontend. Especially if someone wants to deploy a different frontend for the backend in the future. Of course typing both the frontend and backend with TypeScript would enforce the rules better, but I am slower at developing with TypeScript than JavaScript. I think the extra time investment, for writing both with TypeScript, will not be worth it, since I can already display some skills with TypeScript and I would lose the display of skill with JavaScript. (Even though anyone who can develop TypeScript can by default write JavaScript, but TypeScript forces you to write clean code. It is also important to be able to write clean JavaScript, without TypeScript's rules.) This also does not fight against the point I made earlier. TypeScript has valid benefits and will not increase the complexity all that much.
+
+For the backend database I have two options I am familiar with: MongoDB and PostgreSQL. As of now I have not made the desicion what I will go with. Most likely with MongoDB for experience reasons. I would like to use PostgreSQL, because I like the challenge that SQL makes, but I am not sure if it is worth it for this project.
+
+Token authentication will be used to enforce privacy. For this I will be using libraries bcrypt, for hashing and jsonwebtoken for tokens. 
 
 For backend testing I will be using supertest for familarity reasons.
 

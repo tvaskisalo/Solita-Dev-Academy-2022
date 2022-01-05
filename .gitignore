@@ -1,1 +1,24 @@
 Documentation/Dev Diary/DiaryTemplate.md
+*/node_modules
+*/package-lock.json
+
+
+farmers_frontend/.pnp
+farmers_frontend/.pnp.js
+
+farmers_frontend/coverage
+
+farmers_frontend/build
+
+
+farmers_frontend/.DS_Store
+farmers_frontend/.env.local
+farmers_frontend/.env.development.local
+farmers_frontend/.env.test.local
+farmers_frontend/.env.production.local
+
+farmers_frontend/npm-debug.log*
+farmers_frontend/yarn-debug.log*
+farmers_frontend/yarn-error.log*
+
+.env
