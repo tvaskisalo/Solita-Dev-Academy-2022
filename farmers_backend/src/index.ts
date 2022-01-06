@@ -7,6 +7,7 @@ import { PORT, MONGODB } from "./utils/config";
 
 import loginRouter from './controllers/loginRouter';
 import userRouter from './controllers/userRouter';
+import dataRouter from './controllers/dataRouter';
 
 import mongoose = require('mongoose');
 
@@ -26,6 +27,8 @@ app.use(cors());
 app.use('/api/login', loginRouter);
 
 app.use('/api/user', userRouter);
+
+app.use('/api/data', dataRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);

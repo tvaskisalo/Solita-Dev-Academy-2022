@@ -44,6 +44,6 @@ dataPointSchema.set('toJSON', {
     }
 });
 
-const UserModel: Model<DataPoint> = model('DataPoint', dataPointSchema);
+const DataPointModel: Model<DataPoint> = model('DataPoint', dataPointSchema);
 
-module.exports = UserModel;
+export default DataPointModel;

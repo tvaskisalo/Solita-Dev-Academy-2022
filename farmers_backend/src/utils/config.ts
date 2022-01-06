@@ -5,3 +5,5 @@ dotenv.config();
 export const MONGODB = process.env.MONGODB_URI as string;
 
 export const PORT = process.env.PORT as number | undefined;
+
+export const SECRET = process.env.JWT_SECRET as string;

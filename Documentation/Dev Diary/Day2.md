@@ -18,4 +18,4 @@ TypeScript has proven to be more time consuming than I originally thought, but i
 
 ## Plan for the next day
 
-Continue backend code, try to get basic backend working asap, so I can start the frontend production, wihout making another server. Revisit async/await usage in TypeScript for the sake of learning. 
+Continue backend code, try to get basic backend working asap, so I can start the frontend production, wihout making another server. Revisit async/await usage in TypeScript for the sake of learning. Do more intermediate commits and do not get too excited and try to bite too much at once.

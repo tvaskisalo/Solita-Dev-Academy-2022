@@ -20,6 +20,7 @@ router.post('/', (req,res) => {
                 .send({username: user?.username});
         } catch (e) {
             console.log(e);
+            res.status(400).end();
         }
     })();
 });
