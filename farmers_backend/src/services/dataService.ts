@@ -14,7 +14,6 @@ export const getDataPoints =async ( id: string, _date: string) => {
 
 export const addDataPoint = async (userId: string, date: string, _temperature: number, _pH: number, _rainfall: number): Promise<DataPoint | undefined> => {
     try {
-        console.log(_pH);
         const user = await UserModel.findById(userId);
         if (!user) {
             return undefined;
@@ -28,6 +27,7 @@ export const addDataPoint = async (userId: string, date: string, _temperature: n
         });
         return await dPoint.save();
     } catch (e) {
+        console.log(111);
         console.log(e);
         return undefined;
     }

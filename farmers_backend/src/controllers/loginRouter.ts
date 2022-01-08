@@ -13,8 +13,10 @@ router.post('/', (req,res) => {
     void (async () => {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const body = req.body;
+        console.log(body);
         if (!body.username || !body.password) {
             res.status(400).end();
+            return;
         }
         try {
             // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
@@ -26,20 +28,22 @@ router.post('/', (req,res) => {
             if (!(user && passwordIsCorrect)) {
                 console.log(user);
                 
-                return res.status(401).json({
+                res.status(401).json({
                     error: 'invalid login credintials'
                 });
+                return;
+            } else {
+                const token = jwt.sign(
+                    {
+                        username: user.username,
+                        id: user._id as string
+                    },
+                    SECRET
+                );
+                res
+                    .status(200)
+                    .send({ token, username: user.username});
             }
-            const token = jwt.sign(
-                {
-                    username: user.username,
-                    id: user._id as string
-                },
-                SECRET
-            );
-            res
-                .status(200)
-                .send({ token, username: user.username});
         } catch (e) {
             console.log(e);
         }

@@ -1,24 +1,23 @@
+import {
+  Switch, Route, Redirect
+} from "react-router-dom"
+import LoginPage from "./components/login/loginPage";
+import Main from "./components/mainPage/main";
+import { useSelector } from "react-redux";
 
-
-function App() {
+const App = () => {
+  const state = useSelector(state => state);
+  console.log(state);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Switch>
+      <Route path = "/login">
+        <LoginPage/>
+      </Route>
+      <Route path = "/">
+        <Main />
+      </Route>
+    </Switch>
+  )
 }
 
 export default App;

@@ -9,12 +9,11 @@ router.post('/', (req,res) => {
     void (async ()=> {
         // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
         const {date, temperature, rainfall, pH} = req.body;
-        console.log(temperature);
         if (!date) {
             res.status(400).end();
             return;
         }
-        const auth = req.get('authorization');
+        const auth = req.get('Authorization');
         const token = getTokenFrom(auth);
         if (!token || typeof token === 'string' || !("id" in token)) {
             res.status(401).end();
