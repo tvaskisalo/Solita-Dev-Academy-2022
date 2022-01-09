@@ -2,16 +2,15 @@
 
 import express  from "express";
 import { addUser } from "../services/userService";
+import { toUserInfo } from "../utils/typeParsers";
 
 const router = express.Router();
 
 router.post('/', (req,res) => {
     void (async () => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const body = req.body;
         try {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-            const user = await addUser(body.username, body.password);
+            const {username, password} = toUserInfo(req.body);
+            const user = await addUser(username, password);
             if (!user) {
                 res.status(400).end();
             }

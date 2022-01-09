@@ -2,7 +2,7 @@
 
 import { model, Model, Schema } from "mongoose";
 import mongooseUniqueValidator from "mongoose-unique-validator";
-import { DataPoint } from "../types";
+import { DataPointDocument } from "../types";
 
 const dataPointSchema = new Schema({
     user: {
@@ -10,8 +10,22 @@ const dataPointSchema = new Schema({
         ref: 'User'
     },
     date: {
-        type: String,
-        require: true
+        year: {
+            type: Number,
+            required: true
+        },
+        month: {
+            type: Number,
+            required: true,
+            min: 1,
+            max: 12
+        },
+        day: {
+            type: Number,
+            required: true,
+            min: 1,
+            max: 31
+        }
     },
     temperature: {
         type: Number,
@@ -44,6 +58,6 @@ dataPointSchema.set('toJSON', {
     }
 });
 
-const DataPointModel: Model<DataPoint> = model('DataPoint', dataPointSchema);
+const DataPointModel: Model<DataPointDocument> = model('DataPoint', dataPointSchema);
 
 export default DataPointModel;

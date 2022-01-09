@@ -2,7 +2,7 @@
 
 import { model, Model, Schema } from "mongoose";
 import mongooseUniqueValidator from "mongoose-unique-validator";
-import { User } from "../types";
+import { UserDocument } from "../types";
 
 const userSchema = new Schema({
     username: {
@@ -33,6 +33,6 @@ userSchema.set('toJSON', {
     }
 });
 
-const UserModel: Model<User> = model('User', userSchema);
+const UserModel: Model<UserDocument> = model('User', userSchema);
 
 export default UserModel;

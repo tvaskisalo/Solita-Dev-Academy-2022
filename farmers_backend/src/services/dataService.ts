@@ -1,10 +1,17 @@
 import DataPointModel from '../models/dataPoint';
 import UserModel from '../models/user';
-import { DataPoint } from '../types';
+import { DataPointDocument, Date } from '../types';
 
-export const getDataPoints =async ( id: string, _date: string) => {
+export const getMonthDataPoints =async ( id: string, yearNo: number, monthNo: number) => {
     try {
-        const dataPoints = await DataPointModel.find({user: {_id: id}, date:_date });
+        const dataPoints = await DataPointModel.find({
+            "date.day": {$exists: true},
+            "date.month": Number(monthNo),
+            "date.year": Number(yearNo),
+            user: {_id: id}
+        });
+        console.log(dataPoints);
+        
         return dataPoints;
     } catch (e) {
         console.log(e);
@@ -12,18 +19,18 @@ export const getDataPoints =async ( id: string, _date: string) => {
     }
 };
 
-export const addDataPoint = async (userId: string, date: string, _temperature: number, _pH: number, _rainfall: number): Promise<DataPoint | undefined> => {
+export const addDataPoint = async (userId: string, date: Date, temperature: number | undefined, pH: number | undefined, rainfall: number | undefined): Promise<DataPointDocument | undefined> => {
     try {
         const user = await UserModel.findById(userId);
         if (!user) {
             return undefined;
         }
-        const dPoint: DataPoint =  new DataPointModel({
+        const dPoint: DataPointDocument =  new DataPointModel({
             user: user,
             date: date,
-            temperature: _temperature,
-            pH: _pH,
-            rainfall: _rainfall
+            temperature: temperature,
+            pH: pH,
+            rainfall: rainfall
         });
         return await dPoint.save();
     } catch (e) {

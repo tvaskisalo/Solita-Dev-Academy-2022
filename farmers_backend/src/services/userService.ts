@@ -1,14 +1,14 @@
 //This is responsible for giving data access and management for the userRouter.
 
 
-import { User } from '../types';
+import { UserDocument } from '../types';
 import UserModel from '../models/user';
 import bcrypt from 'bcrypt';
 
-export const addUser = async ( username: string, password: string ): Promise<User | undefined> => {
+export const addUser = async ( username: string, password: string ): Promise<UserDocument | undefined> => {
     try {
         const passwordHash = await bcrypt.hash(password, 10);
-        const user: User = new UserModel({
+        const user: UserDocument = new UserModel({
             username: username,
             passwordHash: passwordHash
         });

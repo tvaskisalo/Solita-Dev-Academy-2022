@@ -5,26 +5,19 @@ import UserModel from "../models/user";
 import bcrypt from 'bcrypt';
 import { SECRET } from "../utils/config";
 import jwt = require('jsonwebtoken');
+import { toUserInfo } from "../utils/typeParsers";
 
 
 const router = express.Router();
 
 router.post('/', (req,res) => {
     void (async () => {
-        // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-        const body = req.body;
-        console.log(body);
-        if (!body.username || !body.password) {
-            res.status(400).end();
-            return;
-        }
         try {
-            // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-            const user = await UserModel.findOne({ username: body.username});
+            const {username, password} = toUserInfo(req.body);
+            const user = await UserModel.findOne({ username: username});
             const passwordIsCorrect = user === null
                 ? false
-                // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-                : await bcrypt.compare(body.password, user.passwordHash);
+                : await bcrypt.compare(password, user.passwordHash);
             if (!(user && passwordIsCorrect)) {
                 console.log(user);
                 
@@ -46,6 +39,7 @@ router.post('/', (req,res) => {
             }
         } catch (e) {
             console.log(e);
+            res.status(400).end();
         }
     })();
 });
