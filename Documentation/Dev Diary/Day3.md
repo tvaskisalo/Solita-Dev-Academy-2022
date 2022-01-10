@@ -6,7 +6,7 @@ I finished adding users, logging in and adding datapoints and these are done wit
 
 ## What went well?
 
-Frankly not many things today. I had success making api for adding datapoints after I had struggled with othe apis.
+Frankly not many things today. I had success making api for adding datapoints after I had struggled with other apis.
 
 ## What went poorly?
 
@@ -14,7 +14,7 @@ Again TypeScript has proven to be more difficult than previously anticipated. Bu
 
 ## Reflection
 
-TypeScript is a hard, but an effective teacher. I have learned a lot about TypeScript and JavaScript syntax, since one can't be lazy when writin TypeScript. I have learned a lot how to actually use TypeScript even with libraries that I haven't used with TypeScripy before, such as mongoose. Today has been a rough, but an educational day.
+TypeScript is a demanding, but an effective teacher. I have learned a lot about TypeScript and JavaScript syntax, since one can't be lazy when writin TypeScript. I have learned a lot how to actually use TypeScript even with libraries that I haven't used with TypeScripy before, such as mongoose. Today has been a rough, but an educational day.
 
 ## Plan for the next day
 

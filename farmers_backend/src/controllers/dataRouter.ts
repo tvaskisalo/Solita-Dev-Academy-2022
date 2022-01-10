@@ -1,6 +1,6 @@
 
 import express from 'express';
-import {  addDataPoint, getMonthDataPoints } from '../services/dataService';
+import {  addDataPoint, getDatapointsByMetric, getDataPointsByMonth, getStatisticsByMonth } from '../services/dataService';
 import { getTokenFrom } from '../utils/authentication';
 import { toDataPoint, parseString, parseNumber } from '../utils/typeParsers';
 
@@ -37,31 +37,26 @@ router.post('/', (req,res) => {
     })();
 });
 
-router.get('/month', (req, res) => {
+router.get('/byMonth', (req, res) => {
     void (async () => {
         try {
-            
             const month = parseNumber(Number(req.query.month));
             const year = parseNumber(Number(req.query.year));
 
             const auth = req.get('Authorization');
             const token = getTokenFrom(auth);
-            if (!month || !year) {
-                res.status(400).end();
-                return;
-            } else if (!token || typeof token === 'string' || !("id" in token)) {
+            if (!token || typeof token === 'string' || !("id" in token)) {
                 res.status(401).end();
                 return;
             } else {
                 const id = parseString(token.id);
-                const dataPoints = await getMonthDataPoints(id, year, month);
+                const dataPoints = await getDataPointsByMonth(id, year, month);
                 if (!dataPoints) {
                     res.status(400).end();
                     return;
                 }
                 res
                     .status(200)
-                    // eslint-disable-next-line @typescript-eslint/no-unsafe-call
                     .send(dataPoints);
             }
         } catch (e) {
@@ -70,6 +65,67 @@ router.get('/month', (req, res) => {
         }
     })();
 });
+
+router.get('/monthStatistics', (req,res) => {
+    void (async () => {
+        try {
+            const month = parseNumber(Number(req.query.month));
+            const year = parseNumber(Number(req.query.year));
+
+            const auth = req.get('Authorization');
+            const token = getTokenFrom(auth);
+            if (!token || typeof token === 'string' || !("id" in token)) {
+                res.status(401).end();
+                return;
+            } else {
+                const id = parseString(token.id);
+                const dataPoints = await getStatisticsByMonth(id, year, month);
+                if (!dataPoints) {
+                    res.status(400).end();
+                    return;
+                }
+                res
+                    .status(200)
+                    .send(dataPoints);
+            }
+        } catch (e) {
+            console.log(e);
+            res.status(400).end();
+        }
+    })();
+});
+
+
+router.get('/byMetric', (req, res) => {
+    void (async () => {
+        try {
+            const temperature = req.query.temperature ? parseNumber(Number(req.query.temperature)): 0;
+            const pH = req.query.pH ? parseNumber(Number(req.query.pH)): 0;
+            const rainfall = req.query.rainfall ? parseNumber(Number(req.query.rainfall)) : 0;
+
+            const auth = req.get('Authorization');
+            const token = getTokenFrom(auth);
+            if (!token || typeof token === 'string' || !("id" in token)) {
+                res.status(401).end();
+                return;
+            } else {
+                const id = parseString(token.id);
+                const dataPoints = await getDatapointsByMetric(id, temperature, pH, rainfall);
+                if (!dataPoints) {
+                    res.status(400).end();
+                    return;
+                }
+                res
+                    .status(200)
+                    .send(dataPoints);
+            }
+        } catch (e) {
+            console.log(e);
+            res.status(400).end();
+        }
+    }) ();
+});
+
 //
 //router.get('/year', (req, res) => {
 //    void (async => {

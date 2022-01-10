@@ -1,9 +1,10 @@
 import { Date, DataPoint, UserInfo } from "../types";
 
 
-
+// Explicit any is allowed for body, since it will be checked in the function. 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const toDataPoint = (body: any): DataPoint => {
+    // Unsafe assignment is allowed, since the types will be checked
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const {date, temperature, pH, rainfall} = body;
     const newDataPoint: DataPoint = {
@@ -15,8 +16,10 @@ export const toDataPoint = (body: any): DataPoint => {
     return newDataPoint;
 };
 
+// Explicit any is allowed for body, since it will be checked in the function. 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const toUserInfo = (body: any): UserInfo => {
+    // Unsafe assignment is allowed, since the types will be checked
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     const {username, password} = body;
     const newUser: UserInfo = {
@@ -34,7 +37,7 @@ export const parseString = (str: unknown): string => {
 };
 
 export const parseNumber = (num: unknown): number => {
-    if(!num || !isNumber(num)) {
+    if((!num && num !== 0) || !isNumber(num)) {
         throw new Error('Incorrect or missing number object');
     }
     return num;
