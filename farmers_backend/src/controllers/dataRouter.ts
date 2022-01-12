@@ -31,7 +31,6 @@ router.post('/', (req,res) => {
                     .send(dataPoint.toJSON());
             } 
         } catch (e) {
-            console.log(e);
             res.status(400).end();
         }
     })();
@@ -60,7 +59,6 @@ router.get('/byMonth', (req, res) => {
                     .send(dataPoints);
             }
         } catch (e) {
-            console.log(e);
             res.status(400).end();
         }
     })();
@@ -89,7 +87,6 @@ router.get('/monthStatistics', (req,res) => {
                     .send(dataPoints);
             }
         } catch (e) {
-            console.log(e);
             res.status(400).end();
         }
     })();
@@ -99,9 +96,8 @@ router.get('/monthStatistics', (req,res) => {
 router.get('/byMetric', (req, res) => {
     void (async () => {
         try {
-            const temperature = req.query.temperature ? parseNumber(Number(req.query.temperature)): 0;
-            const pH = req.query.pH ? parseNumber(Number(req.query.pH)): 0;
-            const rainfall = req.query.rainfall ? parseNumber(Number(req.query.rainfall)) : 0;
+
+            const metric = parseString(req.query.metric);
 
             const auth = req.get('Authorization');
             const token = getTokenFrom(auth);
@@ -110,7 +106,8 @@ router.get('/byMetric', (req, res) => {
                 return;
             } else {
                 const id = parseString(token.id);
-                const dataPoints = await getDatapointsByMetric(id, temperature, pH, rainfall);
+                const dataPoints = await getDatapointsByMetric(id, metric);
+                
                 if (!dataPoints) {
                     res.status(400).end();
                     return;
@@ -120,17 +117,9 @@ router.get('/byMetric', (req, res) => {
                     .send(dataPoints);
             }
         } catch (e) {
-            console.log(e);
             res.status(400).end();
         }
     }) ();
 });
-
-//
-//router.get('/year', (req, res) => {
-//    void (async => {
-//        const {year} = req.query;
-//    })();
-//});
 
 export default router;

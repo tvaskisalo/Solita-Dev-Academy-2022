@@ -19,8 +19,6 @@ router.post('/', (req,res) => {
                 ? false
                 : await bcrypt.compare(password, user.passwordHash);
             if (!(user && passwordIsCorrect)) {
-                console.log(user);
-                
                 res.status(401).json({
                     error: 'invalid login credintials'
                 });
@@ -38,7 +36,6 @@ router.post('/', (req,res) => {
                     .send({ token, username: user.username});
             }
         } catch (e) {
-            console.log(e);
             res.status(400).end();
         }
     })();

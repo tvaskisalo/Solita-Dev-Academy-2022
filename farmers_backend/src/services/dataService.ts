@@ -45,35 +45,80 @@ export const getStatisticsByMonth = async (id: string, yearNo: number, monthNo: 
     return dataPoints;
 };
 
-export const getDatapointsByMetric = async (id: string, temperature: number, pH:number, rainfall: number) => {
-    const dataPoints = await DataPointModel.find({ 
-        $and: [
+export const getDatapointsByMetric = async (id: string, metric: string) => {
+    switch (metric) {
+        case 'temperature':
             {
-                $or: [
-                    {"temperature": {$exists: temperature === 1 ? true: false}},
-                    {"pH": {$exists: pH === 1 ? true: false}},
-                    {"rainfall": {$exists: rainfall === 1 ? true: false}},
-                ]   
-            },
-            {user: {_id: id}}
-            ]
-        },{
-        user:0
-    });
-    return dataPoints;
+                const dataPoints = await DataPointModel.find({ 
+                    $and: [
+                        {"temperature": {$exists: true}},
+                        {user: {_id: id}}
+                        ]},{
+                    user:0,
+                    pH:0,
+                    rainFall:0
+                });
+                return dataPoints;
+            }
+        case 'pH':
+            {
+                const dataPoints = await DataPointModel.find({ 
+                    $and: [
+                        {"pH": {$exists: true}},
+                        {user: {_id: id}}
+                    ]},{
+                    user:0,
+                    temperature: 0,
+                    rainfall: 0
+                });
+                return dataPoints;
+            }
+        case 'rainfall':
+            {
+                const dataPoints = await DataPointModel.find({ 
+                    $and: [
+                        {"rainfall": {$exists: true}},
+                        {user: {_id: id}}
+                        ]},{
+                    user:0,
+                    temperature:0,
+                    pH:0,
+                });
+                return dataPoints;
+            }
+        default:
+            return undefined;
+    }
+    
 };
 
-export const addDataPoint = async (userId: string, date: Date, temperature: number | undefined, pH: number | undefined, rainfall: number | undefined): Promise<DataPointDocument | undefined> => {
+export const addDataPoint = async (userId: string, date: Date, temperature: number | undefined, pH: number | undefined, rainfall: number | undefined) => {
     const user = await UserModel.findById(userId);
     if (!user) {
         return undefined;
     }
-    const dPoint: DataPointDocument =  new DataPointModel({
-        user: user,
+    const existingDate = await DataPointModel.find({
         date: date,
-        temperature: temperature,
-        pH: pH,
-        rainfall: rainfall
+        user: {_id: userId}
     });
-    return await dPoint.save();
+    if (existingDate.length !== 0) {
+        
+        return await DataPointModel.findOneAndUpdate({
+            date: date,
+            user: {_id: userId}
+        },{
+            temperature: !temperature ? existingDate[0].temperature : temperature,
+            pH: !pH ? existingDate[0].pH : pH,
+            rainfall: !rainfall ? existingDate[0].rainfall : rainfall
+        });
+    } else {
+        const dPoint: DataPointDocument =  new DataPointModel({
+            user: user,
+            date: date,
+            temperature: temperature,
+            pH: pH,
+            rainfall: rainfall
+        });
+        return await dPoint.save();
+    }
 };
