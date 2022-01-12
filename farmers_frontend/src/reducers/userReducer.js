@@ -1,6 +1,7 @@
 //This file is responsible for user state management
 
 import loginService from '../services/loginService'
+import { setNotification } from './notificationReducer';
 
 const userReducer = (state = {username: '', token: ''}, action) => {
     switch (action.type) {
@@ -23,6 +24,7 @@ export const login = (username, password) => {
                 })
             }
         } catch (e) {
+            dispatch(setNotification('user', 'Failed to log in', 5))
             console.log(e.message);
         }
         

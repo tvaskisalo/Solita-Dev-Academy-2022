@@ -26,9 +26,10 @@ router.post('/', (req,res) => {
                     res.status(400).end();
                     return;
                 }
-                res
-                    .status(200)
-                    .send(dataPoint.toJSON());
+                console.log(dataPoint.toJSON());
+                
+                res.json(dataPoint);
+                    
             } 
         } catch (e) {
             res.status(400).end();
@@ -98,7 +99,6 @@ router.get('/byMetric', (req, res) => {
         try {
 
             const metric = parseString(req.query.metric);
-
             const auth = req.get('Authorization');
             const token = getTokenFrom(auth);
             if (!token || typeof token === 'string' || !("id" in token)) {

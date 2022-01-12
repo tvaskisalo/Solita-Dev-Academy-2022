@@ -227,6 +227,10 @@ test('Api responds correctly to incorrect data 2', async () => {
         rainfall: -10,
         pH: '7'
     };
+    const dataPoint4 = {
+        username: 'tapani',
+        password: 'mustikka'
+    };
     await api
         .post('/api/data')
         .send(dataPoint1)
@@ -240,6 +244,11 @@ test('Api responds correctly to incorrect data 2', async () => {
     await api
         .post('/api/data')
         .send(dataPoint3)
+        .set('Authorization', token)
+        .expect(400);
+    await api
+        .post('/api/data')
+        .send(dataPoint4)
         .set('Authorization', token)
         .expect(400);
     const dataPoints = await DataPointModel.find();

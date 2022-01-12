@@ -9,9 +9,9 @@ export const toDataPoint = (body: any): DataPoint => {
     const {date, temperature, pH, rainfall} = body;
     const newDataPoint: DataPoint = {
         date: parseDate(date),
-        rainfall: rainfall ? parseNumber(rainfall) : undefined,
-        temperature: temperature ? parseNumber(temperature) : undefined,
-        pH: pH ? parseNumber(pH) : undefined,
+        rainfall: rainfall ? parseNumber(Number(rainfall)) : undefined,
+        temperature: temperature ? parseNumber(Number(temperature)) : undefined,
+        pH: pH ? parseNumber(Number(pH)) : undefined,
     };
     return newDataPoint;
 };

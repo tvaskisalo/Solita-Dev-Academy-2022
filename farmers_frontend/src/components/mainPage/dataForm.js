@@ -6,13 +6,13 @@ import { addDataPoint } from "../../reducers/dataReducer";
 
 const DataForm = ({visibility}) => {
     const [date, setDate] = useState('')
-    const [pH, setpH] = useState(undefined)
-    const [temperature, setTemperature] = useState(undefined)
-    const [rainfall, setRainfall] = useState(undefined)
+    const [pH, setpH] = useState(0)
+    const [temperature, setTemperature] = useState(0)
+    const [rainfall, setRainfall] = useState(0)
 
     const dispatch = useDispatch()
     const token = useSelector(state => state.user.token)
-    const show = { display: visibility ? 'none' : '' }
+    const show = { display: visibility ? '' :'none'}
 
     const handleAdd = (event) => {
         event.preventDefault()
@@ -24,9 +24,9 @@ const DataForm = ({visibility}) => {
         }
         dispatch(addDataPoint(dataPoint, token))
         setDate('')
-        setRainfall(undefined)
-        setTemperature(undefined)
-        setpH(undefined)
+        setRainfall(0)
+        setTemperature(0)
+        setpH(0)
     }
 
     return <form onSubmit={handleAdd} style={show}>
