@@ -2,45 +2,44 @@
 
 const reducer = (state = [],action) => {
     switch (action.type) {
-        case 'SetNotification':
-            if (state.find((t) => t.type === action.data.type)) {
-                return state.map(t => {
-                    if (t.type === action.data.type) {
-                        return {type: t.type, text: action.data.notification, visibility:'visible', timeout : state.timeout};
-                    } else {
-                        return t
-                    }
-                }) 
+    case 'SetNotification':
+        if (state.find((t) => t.type === action.data.type)) {
+            return state.map(t => {
+                if (t.type === action.data.type) {
+                    return { type: t.type, text: action.data.notification, hide:false, timeout : state.timeout, positive: state.positive }
+                } else {
+                    return t
+                }
+            })
+        } else {
+            return state.concat({ type: action.data.type, text: action.data.notification, hide:false, timeout : state.timeout, positive: state.positive })
+        }
+    case 'Hide':
+        return state.map(t => {
+            if (t.type === action.data.type) {
+                return { type: t.type, text: '', hide: true }
             } else {
-                return state.concat({type: action.data.type, text: action.data.notification, visibility:'visible', timeout : state.timeout});
+                return t
             }
-        case 'Hide':
-            return state.map(t => {
-                if (t.type === action.data.type) {
-                    return {type: t.type, text: '', visibility: 'hidden'};
-                } else {
-                    return t
-                }
-            }) 
-        case 'ClearTime':
-            const d = state.find((t) => t.type === action.data.type)
-            clearTimeout(d.timeout)
-            return state.map(t => {
-                if (t.type === action.data.type) {
-                    return {...t, timeout:null};
-                } else {
-                    return t
-                }
-            })
-        case 'SetTime':
-            return state.map(t => {
-                if (t.type === action.data.type) {
-                    return {...t, timeout: action.data.timeout};
-                } else {
-                    return t
-                }
-            })
-        default: return state
+        })
+    case 'ClearTime':
+        clearTimeout(state.find((t) => t.type === action.data.type))
+        return state.map(t => {
+            if (t.type === action.data.type) {
+                return { ...t, timeout:null }
+            } else {
+                return t
+            }
+        })
+    case 'SetTime':
+        return state.map(t => {
+            if (t.type === action.data.type) {
+                return { ...t, timeout: action.data.timeout }
+            } else {
+                return t
+            }
+        })
+    default: return state
     }
 }
 
@@ -53,17 +52,18 @@ export const hideNotification = (type) => {
     }
 }
 
-export const setNotification = (type, notification, time) => {
+export const setNotification = (type, notification, time, positive) => {
     return async dispatch => {
         dispatch({
             type: 'SetNotification',
             data: {
                 type,
-                notification
+                notification,
+                positive
             }
         })
-        dispatch({type:'ClearTime', data: {type} })
-        const timeout = await setTimeout(() => dispatch(hideNotification(type)), time*1000)
+        dispatch({ type:'ClearTime', data: { type } })
+        const timeout = setTimeout(() => dispatch(hideNotification(type)), time*1000)
         dispatch({
             type: 'SetTime',
             data: {

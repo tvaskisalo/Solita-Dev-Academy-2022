@@ -1,26 +1,21 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Alert, Collapse } from '@mui/material'
 
-const Notification = ({type}) => {
-    console.log(type);
-    const notifications = useSelector(state => state.notification);
+const Notification = ({ type }) => {
+    const notifications = useSelector(state => state.notification)
     const notification = notifications.find((n) => n.type === type)
-    console.log(notification);
     if (!notification) {
         return <div></div>
     }
-    const style = {
-      border: 'solid',
-      padding: 10,
-      borderWidth: 1,
-      visibility: notification.visibility
-    }
     return (
-      <div style={style}>
-        {notification.text}
-      </div>
+        <Collapse in = {!notification.hide}>
+            <Alert severity = {notification.success ? 'success' : 'error'}>
+                {notification.text}
+            </Alert>
+        </Collapse>
     )
-  }
+}
 
 
-export default Notification;
+export default Notification

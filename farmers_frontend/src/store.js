@@ -1,13 +1,13 @@
-import { createStore, combineReducers, applyMiddleware} from 'redux'
-import thunk from 'redux-thunk';
+import { createStore, combineReducers, applyMiddleware } from 'redux'
+import thunk from 'redux-thunk'
 
 
 import userReducer from './reducers/userReducer'
 import dataReducer from './reducers/dataReducer'
 import statisticsReducer from './reducers/statisticsReducer'
 import notificationReducer from './reducers/notificationReducer'
-import dateReducer from './reducers/dateReducer';
-import metricReducer from './reducers/metricReducer';
+import dateReducer from './reducers/dateReducer'
+import metricReducer from './reducers/metricReducer'
 
 const reducer = combineReducers({
     user: userReducer,
@@ -23,4 +23,4 @@ const store = createStore(
     applyMiddleware(thunk)
 )
 
-export default store;
+export default store

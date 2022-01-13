@@ -1,32 +1,30 @@
-import dataService from "../services/dataService";
+import dataService from '../services/dataService'
+import { setNotification } from './notificationReducer'
 
 const statisticsReducer = (state = [], action) => {
+    const id = action.monthStatistics.id
     switch (action.type) {
-        case 'addMonthStatistic':
-            const id = action.monthStatistics.id;
-            if (state.find((month) => month.id === id)) {
-                console.log('found');
-                return state.map(mStat => {
-                    if (mStat.id === id) {
-                        return action.monthStatistics;
-                    } else {
-                        return mStat;
-                    }   
-                }) 
-            } else {
-                return state.concat(action.monthStatistics);
-            }
-    
-        default:
-            return state;
+    case 'addMonthStatistic':
+        if (state.find((month) => month.id === id)) {
+            return state.map(mStat => {
+                if (mStat.id === id) {
+                    return action.monthStatistics
+                } else {
+                    return mStat
+                }
+            })
+        } else {
+            return state.concat(action.monthStatistics)
+        }
+    default:
+        return state
     }
 }
 
 export const fetchMonthStatistics = (date, token) => {
     return async dispatch => {
         try {
-            const monthStats = await dataService.getMonthStats(date,token);
-            console.log(monthStats);
+            const monthStats = await dataService.getMonthStats(date,token)
             dispatch({
                 type: 'addMonthStatistic',
                 monthStatistics: {
@@ -35,9 +33,9 @@ export const fetchMonthStatistics = (date, token) => {
                 }
             })
         } catch (e) {
-            console.log(e.message);
+            dispatch(setNotification('month', 'Failed to fetch month stats', 5, false))
         }
     }
 }
 
-export default statisticsReducer;
+export default statisticsReducer

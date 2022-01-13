@@ -2,10 +2,10 @@
 
 const dateReducer = (state = '', action) => {
     switch (action.type) {
-        case 'setDate':
-            return action.date;
-        default:
-            return state;
+    case 'setDate':
+        return action.date
+    default:
+        return state
     }
 }
 
@@ -19,4 +19,4 @@ export const setStateDate = (date) => {
     }
 }
 
-export default dateReducer;
+export default dateReducer
