@@ -21,6 +21,7 @@
         "error",
         { "argsIgnorePattern": "^_" }
       ],
+      "indent": ["error", 4],
       "no-case-declarations": "off"
     },
     "parser": "@typescript-eslint/parser",

@@ -6,13 +6,13 @@ const reducer = (state = [],action) => {
         if (state.find((t) => t.type === action.data.type)) {
             return state.map(t => {
                 if (t.type === action.data.type) {
-                    return { type: t.type, text: action.data.notification, hide:false, timeout : state.timeout, positive: state.positive }
+                    return { type: t.type, text: action.data.notification, hide:false, timeout : t.timeout, positive: action.data.positive }
                 } else {
                     return t
                 }
             })
         } else {
-            return state.concat({ type: action.data.type, text: action.data.notification, hide:false, timeout : state.timeout, positive: state.positive })
+            return state.concat({ type: action.data.type, text: action.data.notification, hide:false, timeout : action.data.timeout, positive: action.data.positive })
         }
     case 'Hide':
         return state.map(t => {

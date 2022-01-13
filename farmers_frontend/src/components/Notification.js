@@ -10,7 +10,7 @@ const Notification = ({ type }) => {
     }
     return (
         <Collapse in = {!notification.hide}>
-            <Alert severity = {notification.success ? 'success' : 'error'}>
+            <Alert severity = {notification.positive ? 'success' : 'error'}>
                 {notification.text}
             </Alert>
         </Collapse>

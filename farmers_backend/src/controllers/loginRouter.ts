@@ -13,8 +13,8 @@ const router = express.Router();
 router.post('/', (req,res) => {
     void (async () => {
         try {
-            const {username, password} = toUserInfo(req.body);
-            const user = await UserModel.findOne({ username: username});
+            const { username, password } = toUserInfo(req.body);
+            const user = await UserModel.findOne({ username: username });
             const passwordIsCorrect = user === null
                 ? false
                 : await bcrypt.compare(password, user.passwordHash);
@@ -33,7 +33,7 @@ router.post('/', (req,res) => {
                 );
                 res
                     .status(200)
-                    .send({ token, username: user.username});
+                    .send({ token, username: user.username });
             }
         } catch (e) {
             res.status(400).end();

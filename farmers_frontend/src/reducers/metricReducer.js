@@ -2,7 +2,12 @@ import dataService from '../services/dataService'
 import { setNotification } from './notificationReducer'
 
 const metricReducer = (state = [], action) => {
-    const metric = action.data.metric
+    let metric
+    if (action.data) {
+        metric = action.data.metric
+    } else {
+        return state
+    }
     switch (action.type) {
     case 'addMetricData':
         if (state.find((data) => data.metric ===  metric)) {

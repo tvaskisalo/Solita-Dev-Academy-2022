@@ -2,7 +2,12 @@ import dataService from '../services/dataService'
 import { setNotification } from './notificationReducer'
 
 const statisticsReducer = (state = [], action) => {
-    const id = action.monthStatistics.id
+    let id
+    if (action.monthStatistics) {
+        id = action.monthStatistics.id
+    } else {
+        return state
+    }
     switch (action.type) {
     case 'addMonthStatistic':
         if (state.find((month) => month.id === id)) {

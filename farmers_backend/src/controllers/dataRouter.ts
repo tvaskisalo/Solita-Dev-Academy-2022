@@ -1,15 +1,15 @@
 
 import express from 'express';
-import {  addDataPoint, getDatapointsByMetric, getDataPointsByMonth, getStatisticsByMonth } from '../services/dataService';
+import { addDataPoint, getDatapointsByMetric, getDataPointsByMonth, getStatisticsByMonth } from '../services/dataService';
 import { getTokenFrom } from '../utils/authentication';
 import { toDataPoint, parseString, parseNumber } from '../utils/typeParsers';
 
 const router = express.Router();
 
 router.post('/', (req,res) => {
-    void (async ()=> {
+    void (async () => {
         try {
-            const {date, temperature, rainfall, pH} = toDataPoint(req.body);
+            const { date, temperature, rainfall, pH } = toDataPoint(req.body);
             if (!date) {
                 res.status(400).end();
                 return;
@@ -26,9 +26,7 @@ router.post('/', (req,res) => {
                     res.status(400).end();
                     return;
                 }
-                console.log(dataPoint.toJSON());
-                
-                res.json(dataPoint);
+                res.json(dataPoint.toJSON());
                     
             } 
         } catch (e) {

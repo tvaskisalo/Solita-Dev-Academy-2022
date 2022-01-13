@@ -3,7 +3,12 @@ import dataService from '../services/dataService'
 import { setNotification } from './notificationReducer'
 
 const dataReducer = (state = [], action) => {
-    const id = action.monthDataPoints.id
+    let id
+    if (action.monthDataPoints) {
+        id = action.monthDataPoints.id
+    } else {
+        return state
+    }
     switch (action.type) {
     case 'addMonthDatapoints':
         if (state.find((dp) => dp.id === id)) {

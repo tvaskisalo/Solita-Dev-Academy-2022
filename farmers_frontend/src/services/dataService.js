@@ -36,4 +36,4 @@ const getMetricStats = async (metric, token) => {
     const res = await axios.get(`${baseUrl}/byMetric?metric=${metric}`, config)
     return res.data
 }
-export { addDataPoint, getMonthData, getMonthStats, getMetricStats }
+export default { addDataPoint, getMonthData, getMonthStats, getMetricStats }
