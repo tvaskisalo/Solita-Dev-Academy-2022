@@ -1,7 +1,11 @@
 //This file is responsible for user state management
 
 import loginService from '../services/loginService'
+import { resetMonthDatapoints } from './dataReducer'
+import { resetDate } from './dateReducer'
+import { resetMetricData } from './metricReducer'
 import { setNotification } from './notificationReducer'
+import { resetStats } from './statisticsReducer'
 
 const userReducer = (state = { username: '', token: '' }, action) => {
     switch (action.type) {
@@ -31,10 +35,16 @@ export const login = (username, password) => {
 }
 
 export const logout = () => {
-    return ({
-        type: 'removeUser',
-        user: null
-    })
+    return dispatch => {
+        dispatch({
+            type: 'removeUser',
+            user: null
+        })
+        dispatch(resetStats())
+        dispatch(resetMetricData())
+        dispatch(resetMonthDatapoints())
+        dispatch(resetDate())
+    }
 }
 
 export default userReducer

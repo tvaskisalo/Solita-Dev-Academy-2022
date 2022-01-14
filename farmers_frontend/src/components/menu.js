@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import Stack from '@mui/material/Stack'
 import Button from '@mui/material/Button'
 import Grid from '@mui/material/Grid'
-import AddDataOverlay from './addDataPage/addDataOverlay'
+import AddDataOverlay from './addDataOverlay/addDataOverlay'
 import { useDispatch } from 'react-redux'
 import { logout } from '../reducers/userReducer'
 
@@ -22,11 +22,11 @@ const Menu = ({ loggedIn }) => {
         <Grid container justifyContent = 'center'>
             <Stack direction = 'row' spacing = {2}>
                 {loggedIn
-                    ? <Button variant = 'contained' onClick = {handleLogout}>logout</Button>
-                    : <Button variant = 'contained' onClick = {()  => history.push('/login')}>login</Button>}
+                    ? <Button id='logoutButton' variant = 'contained' onClick = {handleLogout}>logout</Button>
+                    : <Button id='loginButton'variant = 'contained' onClick = {()  => history.push('/login')}>login</Button>}
                 <AddDataOverlay disabled = {disabled}/>
-                <Button disabled = {disabled} variant = 'contained' onClick = {()  => history.push('/monthData')}>Month Data</Button>
-                <Button disabled = {disabled} variant = 'contained' onClick = {() => history.push('/metricData')}>Metric Data</Button>
+                <Button id='monthDataButton' disabled = {disabled} variant = 'contained' onClick = {()  => history.push('/monthData')}>Month Data</Button>
+                <Button id='metricDataButton' disabled = {disabled} variant = 'contained' onClick = {() => history.push('/metricData')}>Metric Data</Button>
             </Stack>
         </Grid>
     )

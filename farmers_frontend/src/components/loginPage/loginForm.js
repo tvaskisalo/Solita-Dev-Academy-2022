@@ -27,7 +27,7 @@ const LoginForm = () => {
             <InputLabel htmlFor = 'password'>Password</InputLabel>
             <Input placeholder = 'password' id = 'password' value = {password} onChange = {({ target })  => setPassword(target.value)}/>
             <div></div>
-            <Button type = 'submit' variant = 'contained'>Submit </Button>
+            <Button type = 'submit' variant = 'contained' id = 'submit'>Submit </Button>
         </Box>
     )
 }

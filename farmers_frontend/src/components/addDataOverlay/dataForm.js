@@ -45,7 +45,7 @@ const DataForm = () => {
             <InputLabel htmlFor = 'rainfall'>Rainfall</InputLabel>
             <Input type = 'number' placeholder = '[0,500]' id = 'rainfall' value = {rainfall} onChange = {({ target }) => setRainfall(target.value)}/>
             <div></div>
-            <Button type = 'submit' variant = 'contained'>Submit </Button>
+            <Button type = 'submit' variant = 'contained' id='submitData'>Submit </Button>
         </Box>
     )
 }

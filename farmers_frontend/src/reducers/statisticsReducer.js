@@ -21,9 +21,17 @@ const statisticsReducer = (state = [], action) => {
         } else {
             return state.concat(action.monthStatistics)
         }
+    case 'resetStats':
+        return []
     default:
         return state
     }
+}
+
+export const resetStats = () => {
+    return ({
+        type: 'resetStats'
+    })
 }
 
 export const fetchMonthStatistics = (date, token) => {

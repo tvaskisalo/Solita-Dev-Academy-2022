@@ -13,7 +13,7 @@ const metricReducer = (state = [], action) => {
         if (state.find((data) => data.metric ===  metric)) {
             return state.map(data => {
                 if (data.metric === metric) {
-                    return action.data.dataPoints
+                    return action.data
                 } else {
                     return data
                 }
@@ -21,9 +21,17 @@ const metricReducer = (state = [], action) => {
         } else {
             return state.concat(action.data)
         }
+    case 'resetMetricData':
+        return []
     default:
         return state
     }
+}
+
+export const resetMetricData = () => {
+    return ({
+        type: 'resetMetricData'
+    })
 }
 
 export const addMetricData = (metric, token) => {

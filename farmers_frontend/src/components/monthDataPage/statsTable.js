@@ -12,7 +12,7 @@ const StatisticsTable = ({ statsData }) => {
         return <div></div>
     }
     return (
-        <TableContainer component = {Paper} >
+        <TableContainer component = {Paper} className='statsTable'>
             <Table sx = {{ maxWidth : 400 }} >
                 <TableHead>
                     <TableRow>

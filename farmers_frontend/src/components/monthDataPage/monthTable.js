@@ -19,7 +19,7 @@ const MonthTable = ({ monthData }) => {
     })
 
     return (
-        <TableContainer component={Paper} >
+        <TableContainer component={Paper} className='monthTable' >
             <Table sx = {{ maxWidth : 400 }} >
                 <TableHead>
                     <TableRow>

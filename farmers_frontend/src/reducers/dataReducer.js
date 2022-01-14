@@ -22,9 +22,17 @@ const dataReducer = (state = [], action) => {
         } else {
             return state.concat(action.monthDataPoints)
         }
+    case 'resetMonthDatapoints':
+        return []
     default:
         return state
     }
+}
+
+export const resetMonthDatapoints = () => {
+    return ({
+        type: 'resetMonthDatapoints'
+    })
 }
 
 export const addDataPoint = (datapoint, token) => {

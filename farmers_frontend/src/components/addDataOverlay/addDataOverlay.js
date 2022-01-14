@@ -21,7 +21,7 @@ const AddDataOverlay = ({ disabled }) => {
 
     return (
         <div>
-            <Button disabled = {disabled} onClick={() => setOpen(true)} variant='contained'>Add a datapoint</Button>
+            <Button id='addDataButton' disabled = {disabled} onClick={() => setOpen(true)} variant='contained'>Add a datapoint</Button>
             <Modal open = {open} onClose = {() => setOpen(false)}>
                 <Box sx = {style}>
                     <Notification type='data' />
