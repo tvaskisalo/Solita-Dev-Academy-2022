@@ -85,14 +85,14 @@ Each farm have their own user that they can use to access their data. Test user 
 
 ### Technology choices
 
-Technology choices and their reasoning can be found [here](./Documentation/Architecture and Design/Architecture and Design.md). The file also has some reflection on the given assignment and some core points that I made from it.
+Technology choices and their reasoning can be found [here](https://github.com/tvaskisalo/Solita-Dev-Academy-2022/blob/main/Documentation/Architecture%20and%20Design/Architecture%20and%20Design.md). The file also has some reflection on the given assignment and some core points that I made from it.
 
 ## ToDo
 
 The application frontend does not provide a way to add new users, but the backend does. If you want to add a new user to the application, run the backend with "npm run dev" and then make a post request to 'http://localhost:PORT/api/user', where PORT is the port where the backend is running (Default 3001), with the body containing fields "username": "your new username" and "password": "your new password". The backend does not allow duplicate usernames. After that you can login regularly from the frontend.
 
 ## Dev Diary
-I have kept [a development diary](./Documentation/Dev Diary) during the development. They contain what I achieved each day and reflection about the work done. I highly recommend reading them through.
+I have kept [a development diary](https://github.com/tvaskisalo/Solita-Dev-Academy-2022/tree/main/Documentation/Dev%20Diary) during the development. It contains what I achieved each day and reflection about the work done. I highly recommend reading them through.
 
 
 
