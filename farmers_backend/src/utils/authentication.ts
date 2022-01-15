@@ -1,6 +1,7 @@
 import jwt = require('jsonwebtoken');
 import { SECRET } from './config';
 
+//Provides bearer token extraction from authentication. This could be used as a middleware as well.
 export const getTokenFrom = (auth: string | undefined) => {
     let token;
     let decodedToken = undefined;

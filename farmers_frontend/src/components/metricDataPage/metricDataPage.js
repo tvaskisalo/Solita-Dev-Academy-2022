@@ -5,6 +5,7 @@ import MetricForm from './metricForm'
 import MetricTable from './metricTable'
 import Notification from '../Notification'
 
+//Renders the whole metric data page
 const MetricDataPage = () => {
     const metricDataArray = useSelector(state => state.metricData)
 

@@ -5,6 +5,7 @@ import { addUser } from '../services/userService';
 
 const router = express.Router();
 
+//Api to reset the database. Only available during testing.
 router.post('/reset', (_req,res) => {
     void (async () => {
         await UserModel.deleteMany({});

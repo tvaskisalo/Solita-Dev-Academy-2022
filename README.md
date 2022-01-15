@@ -24,7 +24,12 @@ If you wish, you can initialize the database with all the provided .csv data wit
 
 ### Tests
 
-Backend tests can be run with npm run dev in ./farmers_backend
+Backend tests can be run with npm run dev in ./farmers_backend. This requires .env to be configured correctly.
+Frontend test can be run with npm run dev in ./farmers_frontend
+End to end test can be run by doing the following:
+1. Start the backend in test mode by running npm run start:test in ./farmers_backend
+2. Start the frontend by running npm start in ./farmers_frontend
+3. Run npm run test:e2e or npm run cypress:open at ./farmers_frontend in a third console depending if you want the test to be run in a browser or in a console.
 
 ## Application specs
 

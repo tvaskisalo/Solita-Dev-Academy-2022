@@ -1,4 +1,7 @@
-// This has been confirmed to work on linux, but should work on windows too.
+// This file works on Linux. Should work on Windows as well, but not confirmed.
+// Requires ./src/data/ to contain all the exercises .csv files
+// This also adds four new users for each of the files.
+// This is also quite slow to run.
 
 import csvParser from "./utils/csvparser";
 import path from "path";

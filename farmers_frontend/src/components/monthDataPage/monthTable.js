@@ -7,14 +7,15 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 
+//Renders the table, which shows the months datapoints
 const MonthTable = ({ monthData }) => {
 
     const rawDataPoints = monthData.map((dp) => {
         return {
             date: `${dp.date.year}-${dp.date.month}-${dp.date.day}`,
-            temperature: dp.temperature ? dp.temperature : '-',
-            pH: dp.pH ? dp.pH : '-',
-            rainfall: dp.rainfall ? dp.rainfall : '-'
+            temperature: (dp.temperature || dp.temperature === 0)? dp.temperature : '-',
+            pH: (dp.pH || dp.pH === 0) ? dp.pH : '-',
+            rainfall: (dp.rainfall || dp.rainfall === 0) ? dp.rainfall : '-'
         }
     })
 

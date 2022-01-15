@@ -10,6 +10,7 @@ import { toUserInfo } from "../utils/typeParsers";
 
 const router = express.Router();
 
+//Api to login. Expects body to contain password and username.
 router.post('/', (req,res) => {
     void (async () => {
         try {

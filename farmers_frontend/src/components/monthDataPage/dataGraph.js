@@ -1,6 +1,7 @@
 import { ComposedChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Line }  from 'recharts'
 import React from 'react'
 
+//Renders a graph based on given datapoints and type.
 const DataGraph = ({ dataPoints, yType, color, yLabel }) => {
     if (yType === 'rainfall') {
         return <ComposedChart

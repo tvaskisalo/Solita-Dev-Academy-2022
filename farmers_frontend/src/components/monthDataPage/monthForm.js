@@ -5,6 +5,7 @@ import { setStateDate } from '../../reducers/dateReducer'
 import { fetchMonthStatistics } from '../../reducers/statisticsReducer'
 import { Box, Input, InputLabel, Button } from '@mui/material'
 
+//Renders the form for selecting a month and year
 const MonthForm = () => {
     const [month, setMonth] = useState('')
     const [year, setYear] = useState('')
@@ -36,7 +37,7 @@ const MonthForm = () => {
             <InputLabel htmlFor = 'year'>Year</InputLabel>
             <Input type = 'number' placeholder = 'year' id = 'year' value = {year} onChange = {({ target })  => setYear(target.value)}/>
             <div></div>
-            <Button type = 'submit' variant = 'contained'>Fetch</Button>
+            <Button id='fetchMonth' type = 'submit' variant = 'contained'>Fetch</Button>
         </Box>
     )
 }

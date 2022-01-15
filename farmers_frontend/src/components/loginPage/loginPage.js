@@ -8,7 +8,7 @@ const style = {
     left: '50%',
     transform: 'translate(-30%, -30%)',
 }
-
+//Renders whole login page
 const LoginPage = () => {
     return <div style = {style}>
         <Notification type = 'user' />

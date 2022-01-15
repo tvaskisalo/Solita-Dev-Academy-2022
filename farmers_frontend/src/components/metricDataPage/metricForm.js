@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { addMetricData } from '../../reducers/metricReducer'
 
-
+//Renders a form for fetching by metric
 const MetricForm = ({ setShowMetric }) => {
     const [value, setValue] = useState('')
     const dispatch = useDispatch()
@@ -20,11 +20,11 @@ const MetricForm = ({ setShowMetric }) => {
             <FormControl component = 'fieldset'>
                 <FormLabel component ='legend'>Metric</FormLabel>
                 <RadioGroup value = {value} onChange = {({ target }) => setValue(target.value)}>
-                    <FormControlLabel value = 'temperature' control = {<Radio />} label = 'Temperature'/>
-                    <FormControlLabel value = 'pH' control = {<Radio />} label = 'pH'/>
-                    <FormControlLabel value = 'rainfall' control = {<Radio />} label = 'Rainfall'/>
+                    <FormControlLabel id='temperatureRadio' value = 'temperature' control = {<Radio />} label = 'Temperature'/>
+                    <FormControlLabel id='pHRadio' value = 'pH' control = {<Radio />} label = 'pH'/>
+                    <FormControlLabel id='rainfallRadio' value = 'rainfall' control = {<Radio />} label = 'Rainfall'/>
                 </RadioGroup>
-                <Button variant = 'contained' onClick = {handleSubmit}>Select</Button>
+                <Button id='metricFetch' variant = 'contained' onClick = {handleSubmit}>Select</Button>
             </FormControl>
         </div>
     )

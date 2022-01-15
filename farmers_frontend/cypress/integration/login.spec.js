@@ -1,6 +1,5 @@
+//This eslint error should not pop-up because I do have cypress libraries for eslint, but it still does, so I disabled it for all cypress files
 /* eslint-disable no-undef */
-
-
 describe('Login', function() {
     beforeEach(function() {
         cy.request('POST', 'http://localhost:3001/api/test/reset')

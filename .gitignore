@@ -2,6 +2,7 @@ Documentation/Dev Diary/DiaryTemplate.md
 */node_modules
 */package-lock.json
 
+farmers_frontend/cypress/videos
 
 farmers_frontend/.pnp
 farmers_frontend/.pnp.js

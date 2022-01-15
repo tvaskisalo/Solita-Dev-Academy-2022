@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Alert, Collapse } from '@mui/material'
 
+//Renders all notifications.
 const Notification = ({ type }) => {
     const notifications = useSelector(state => state.notification)
     const notification = notifications.find((n) => n.type === type)

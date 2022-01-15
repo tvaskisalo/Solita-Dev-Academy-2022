@@ -1,1 +1,7 @@
-This is the template for .env file, which is required to run the backend. Will be updated later.
+MONGODB_URI=*url for application's database' mongodb*
+MONGODB_URI_TEST=*url for test database' mongodb*
+
+MongoDB uri looks roughly like this:
+'mongodb+srv://<Username>:<Password>@cluster0.<ClusterID>.mongodb.net/<DatabaseName>?retryWrites=true&w=majority'
+
+JWT_SECRET=*secret string for JWT*

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
-// this file does kinda work, I guess? Highly reccommend that you do not run it though
+// This will parse the given .csv file into datapoints and add it for the user with the given id.
 import fs from 'fs';
 import { parseDate, parseString } from './typeParsers';
 import { addDataPoint } from '../services/dataService';

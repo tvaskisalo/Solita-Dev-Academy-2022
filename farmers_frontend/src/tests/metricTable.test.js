@@ -24,21 +24,18 @@ test('Metric table renders correctly 1', () => {
             month: 7,
             day: 8
         },
-        pH: 10
+        pH: 9
     }]
 
     const { container } = render(
         <MetricTable metricData={metricData} metric='pH' />
     )
-    expect(container).toHaveTextContent('Date')
-    expect(container).toHaveTextContent('pH')
-
-    expect(container).toHaveTextContent('2020-1-2')
-    expect(container).toHaveTextContent('2019-4-5')
-    expect(container).toHaveTextContent('2018-7-8')
-    expect(container).toHaveTextContent('3')
-    expect(container).toHaveTextContent('6')
-    expect(container).toHaveTextContent('9')
+    //Value declarations without spaces
+    expect(container).toHaveTextContent('DatepH')
+    //Values without spaces
+    expect(container).toHaveTextContent('2020-1-23')
+    expect(container).toHaveTextContent('2019-4-56')
+    expect(container).toHaveTextContent('2018-7-89')
 })
 
 test('Metric table renders correctly 2', () => {
@@ -62,21 +59,18 @@ test('Metric table renders correctly 2', () => {
             month: 7,
             day: 8
         },
-        temperature: 10
+        temperature: 9
     }]
 
     const { container } = render(
         <MetricTable metricData={metricData} metric='temperature' />
     )
-    expect(container).toHaveTextContent('Date')
-    expect(container).toHaveTextContent('temperature')
-
-    expect(container).toHaveTextContent('2020-1-2')
-    expect(container).toHaveTextContent('2019-4-5')
-    expect(container).toHaveTextContent('2018-7-8')
-    expect(container).toHaveTextContent('3')
-    expect(container).toHaveTextContent('6')
-    expect(container).toHaveTextContent('9')
+    //Value declarations without spaces
+    expect(container).toHaveTextContent('Datetemperature')
+    //Values without spaces
+    expect(container).toHaveTextContent('2020-1-23')
+    expect(container).toHaveTextContent('2019-4-56')
+    expect(container).toHaveTextContent('2018-7-89')
 })
 
 test('Metric table renders correctly 3', () => {
@@ -100,19 +94,16 @@ test('Metric table renders correctly 3', () => {
             month: 7,
             day: 8
         },
-        rainfall: 10
+        rainfall: 9
     }]
 
     const { container } = render(
         <MetricTable metricData={metricData} metric='rainfall' />
     )
-    expect(container).toHaveTextContent('Date')
-    expect(container).toHaveTextContent('rainfall')
-
-    expect(container).toHaveTextContent('2020-1-2')
-    expect(container).toHaveTextContent('2019-4-5')
-    expect(container).toHaveTextContent('2018-7-8')
-    expect(container).toHaveTextContent('3')
-    expect(container).toHaveTextContent('6')
-    expect(container).toHaveTextContent('9')
+    //Value declarations without spaces
+    expect(container).toHaveTextContent('Daterainfall')
+    //Values without spaces
+    expect(container).toHaveTextContent('2020-1-23')
+    expect(container).toHaveTextContent('2019-4-56')
+    expect(container).toHaveTextContent('2018-7-89')
 })

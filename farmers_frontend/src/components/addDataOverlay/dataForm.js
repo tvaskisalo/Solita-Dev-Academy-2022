@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { addDataPoint } from '../../reducers/dataReducer'
 import { Box, Input, InputLabel, Button } from '@mui/material'
 
-
+//Renders and provides funtionality for form to add datapoint
 const DataForm = () => {
     const [date, setDate] = useState('')
     const [pH, setpH] = useState('')
@@ -25,9 +25,9 @@ const DataForm = () => {
         }
         dispatch(addDataPoint(dataPoint, token))
         setDate('')
-        setRainfall(0)
-        setTemperature(0)
-        setpH(0)
+        setRainfall('')
+        setTemperature('')
+        setpH('')
     }
 
     return (

@@ -3,7 +3,6 @@ import DataForm from './dataForm'
 import { Button, Modal, Typography, Box } from '@mui/material'
 import Notification from '../Notification'
 
-
 const style = {
     position: 'absolute',
     top: '50%',
@@ -15,7 +14,7 @@ const style = {
     boxShadow: 24,
     p: 4,
 }
-
+//Renders the overlay for adding a new datapoint
 const AddDataOverlay = ({ disabled }) => {
     const [open, setOpen] = useState(false)
 

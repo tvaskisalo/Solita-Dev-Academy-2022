@@ -7,16 +7,15 @@ import TableHead from '@mui/material/TableHead'
 import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 
-
+//Renders the table, which shows the metric data by given metric data and metric
 const MetricTable = ({ metricData, metric }) => {
     let rawMetricData
-
     switch (metric) {
     case 'pH':
         rawMetricData = metricData.map((dp) => {
             return {
                 date: `${dp.date.year}-${dp.date.month}-${dp.date.day}`,
-                pH: dp.pH ? dp.pH : '-',
+                pH: (dp.pH || dp.pH === 0) ? dp.pH : '-',
             }
         })
         break
@@ -24,7 +23,7 @@ const MetricTable = ({ metricData, metric }) => {
         rawMetricData = metricData.map((dp) => {
             return {
                 date: `${dp.date.year}-${dp.date.month}-${dp.date.day}`,
-                temperature: dp.temperature ? dp.temperature : '-',
+                temperature: (dp.temperature || dp.temperature === 0) ? dp.temperature : '-',
             }
         })
         break
@@ -32,7 +31,7 @@ const MetricTable = ({ metricData, metric }) => {
         rawMetricData = metricData.map((dp) => {
             return {
                 date: `${dp.date.year}-${dp.date.month}-${dp.date.day}`,
-                rainfall: dp.rainfall ? dp.rainfall : '-'
+                rainfall: (dp.rainfall || dp.rainfall === 0) ? dp.rainfall : '-'
             }
         })
         break
@@ -52,9 +51,9 @@ const MetricTable = ({ metricData, metric }) => {
                     {rawMetricData.map(dataPoint  => (
                         <TableRow key = {dataPoint.date}>
                             <TableCell component  =  'th' scope  = 'row'>{dataPoint.date}</TableCell>
-                            {dataPoint.temperature ? <TableCell align = 'right'>{dataPoint.temperature}</TableCell>: null}
-                            {dataPoint.pH ? <TableCell align = 'right'>{dataPoint.pH}</TableCell> : null}
-                            {dataPoint.rainfall ? <TableCell align = 'right'>{dataPoint.rainfall}</TableCell>: null}
+                            {(dataPoint.temperature || dataPoint.temperature === 0) ? <TableCell align = 'right'>{dataPoint.temperature}</TableCell>: null}
+                            {(dataPoint.pH || dataPoint.pH === 0) ? <TableCell align = 'right'>{dataPoint.pH}</TableCell> : null}
+                            {(dataPoint.rainfall || dataPoint.rainfall === 0)? <TableCell align = 'right'>{dataPoint.rainfall}</TableCell>: null}
                         </TableRow>
                     ))}
                 </TableBody>

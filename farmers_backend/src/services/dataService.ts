@@ -1,3 +1,5 @@
+//File gives data access to datapoints for routers.
+
 import DataPointModel from '../models/dataPoint';
 import UserModel from '../models/user';
 import { DataPointDocument, Date } from '../types';
@@ -59,7 +61,6 @@ export const getDatapointsByMetric = async (id: string, metric: string) => {
             rainFall:0
         });
         return dataPoints;
-
     case 'pH':
         dataPoints = await DataPointModel.find({ 
             $and: [
@@ -98,7 +99,8 @@ export const addDataPoint = async (userId: string, date: Date, temperature: numb
         user: { _id: userId }
     });
     if (existingDate.length !== 0) {
-        
+        //If there exists a datapoint with the date, update it instead of adding a new one.
+        //This should be refactored to it's own function, since now this function has two responsibilities.
         return await DataPointModel.findOneAndUpdate({
             date: date,
             user: { _id: userId }

@@ -6,6 +6,7 @@ import { toUserInfo } from "../utils/typeParsers";
 
 const router = express.Router();
 
+//Api to add new users. Requires body to contain proper username and password.
 router.post('/', (req,res) => {
     void (async () => {
         try {

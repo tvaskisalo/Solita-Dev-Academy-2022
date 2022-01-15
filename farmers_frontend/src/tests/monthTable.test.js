@@ -27,16 +27,11 @@ test('Month table renders correctly', () => {
     const { container } = render(
         <MonthTable monthData={monthData} />
     )
-    expect(container).toHaveTextContent('Date')
-    expect(container).toHaveTextContent('Temperature')
-    expect(container).toHaveTextContent('pH')
-    expect(container).toHaveTextContent('Rainfall')
-    expect(container).toHaveTextContent('2020-7-8')
-    expect(container).toHaveTextContent('2020-2-3')
-    expect(container).toHaveTextContent('4')
-    expect(container).toHaveTextContent('5')
-    expect(container).toHaveTextContent('6')
-    expect(container).toHaveTextContent('9')
-    expect(container).toHaveTextContent('10')
-    expect(container).toHaveTextContent('11')
+
+    //Value declarations without spaces
+    expect(container).toHaveTextContent('DateTemperaturepHRainfall')
+    //Values without spaces
+    expect(container).toHaveTextContent('2020-7-891011')
+    expect(container).toHaveTextContent('2020-2-3456')
+
 })

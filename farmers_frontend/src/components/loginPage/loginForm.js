@@ -1,4 +1,4 @@
-//This component is responsible for creating UI for login.
+//This component is responsible for creating form for login.
 import React, { useState } from 'react'
 import { login } from '../../reducers/userReducer'
 import { useDispatch } from 'react-redux'

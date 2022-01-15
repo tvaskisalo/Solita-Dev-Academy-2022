@@ -1,4 +1,4 @@
-//This is responsible for giving data access and management for the userRouter.
+//This is responsible for giving data access and management to user data for the userRouter.
 
 
 import { UserDocument } from '../types';

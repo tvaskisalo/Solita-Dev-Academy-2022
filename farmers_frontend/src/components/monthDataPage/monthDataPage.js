@@ -7,6 +7,7 @@ import MonthForm from './monthForm'
 import { Stack, Grid } from '@mui/material'
 import Notification from '../Notification'
 
+//Renders the whole month data page.
 const MonthDataPage = () => {
     const data = useSelector(state => state.dataPoints)
     const stats = useSelector(state => state.monthStatistics)
