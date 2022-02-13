@@ -1,5 +1,5 @@
 # Solita-Dev-Academy-2022
-Repository for the Solita Dev Academy 2022 pre-assignment 
+Repository for the Solita Dev Academy 2022 pre-assignment. The pre-assignment can be found here https://github.com/solita/dev-academy-2022-exercise
 
 
 ## Instructions
